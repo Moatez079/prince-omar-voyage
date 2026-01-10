@@ -1,8 +1,11 @@
 import { Button } from '@/components/ui/button';
 import { Phone, Mail, MessageCircle } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 import cruiseNight from '@/assets/cruise-night.jpg';
 
 const ContactCTA = () => {
+  const { t } = useLanguage();
+
   return (
     <section className="relative py-24 overflow-hidden">
       {/* Background */}
@@ -15,13 +18,12 @@ const ContactCTA = () => {
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-6 text-center">
-        <span className="text-accent font-medium tracking-widest uppercase text-sm">Ready to Sail?</span>
+        <span className="text-accent font-medium tracking-widest uppercase text-sm">{t('contact.readyToSail')}</span>
         <h2 className="font-display text-3xl md:text-5xl font-bold text-primary-foreground mt-4 mb-6">
-          Begin Your Nile Journey Today
+          {t('contact.beginJourney')}
         </h2>
         <p className="text-primary-foreground/80 max-w-2xl mx-auto mb-10">
-          Contact us to book your unforgettable cruise experience or to learn more about our 
-          exclusive packages and special offers.
+          {t('contact.ctaDescription')}
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
@@ -32,7 +34,7 @@ const ContactCTA = () => {
           >
             <a href="https://wa.me/201023723245" className="flex items-center gap-2">
               <MessageCircle className="w-5 h-5" />
-              WhatsApp Us
+              {t('contact.whatsappUs')}
             </a>
           </Button>
           <Button 
@@ -54,13 +56,13 @@ const ContactCTA = () => {
           >
             <a href="mailto:amoamen053@gmail.com" className="flex items-center gap-2">
               <Mail className="w-5 h-5" />
-              Email Us
+              {t('contact.emailUs')}
             </a>
           </Button>
         </div>
 
         <p className="text-primary-foreground/60 text-sm">
-          We respond within 24 hours • Available 7 days a week
+          {t('common.respond24h')}
         </p>
       </div>
     </section>

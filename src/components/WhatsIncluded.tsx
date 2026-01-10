@@ -10,71 +10,74 @@ import {
   Coffee,
   Camera
 } from 'lucide-react';
-
-const inclusions = [
-  {
-    icon: Utensils,
-    title: 'Full Board Meals',
-    description: 'Exquisite breakfast, lunch, and dinner with international and local cuisine',
-  },
-  {
-    icon: Wine,
-    title: 'Welcome Drink',
-    description: 'Refreshing welcome cocktail upon embarkation',
-  },
-  {
-    icon: Coffee,
-    title: 'Tea & Coffee',
-    description: 'Complimentary tea and coffee available throughout the day',
-  },
-  {
-    icon: Camera,
-    title: 'Guided Tours',
-    description: 'Professional Egyptologist guides for all temple visits',
-  },
-  {
-    icon: Waves,
-    title: 'Swimming Pool',
-    description: 'Sundeck pool with panoramic Nile views',
-  },
-  {
-    icon: Music,
-    title: 'Entertainment',
-    description: 'Nightly entertainment including Nubian shows and Galabeya parties',
-  },
-  {
-    icon: Wifi,
-    title: 'Wi-Fi Access',
-    description: 'Stay connected with onboard internet service',
-  },
-  {
-    icon: Sparkles,
-    title: 'Daily Housekeeping',
-    description: 'Premium housekeeping service twice daily',
-  },
-  {
-    icon: Users,
-    title: 'Personal Service',
-    description: 'Attentive staff dedicated to your comfort',
-  },
-  {
-    icon: ShieldCheck,
-    title: 'Safety & Security',
-    description: '24/7 security and safety protocols',
-  },
-];
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const WhatsIncluded = () => {
+  const { t } = useLanguage();
+
+  const inclusions = [
+    {
+      icon: Utensils,
+      title: t('included.fullBoard'),
+      description: t('included.fullBoardDesc'),
+    },
+    {
+      icon: Wine,
+      title: t('included.welcomeDrink'),
+      description: t('included.welcomeDrinkDesc'),
+    },
+    {
+      icon: Coffee,
+      title: t('included.teaCoffee'),
+      description: t('included.teaCoffeeDesc'),
+    },
+    {
+      icon: Camera,
+      title: t('included.guidedTours'),
+      description: t('included.guidedToursDesc'),
+    },
+    {
+      icon: Waves,
+      title: t('included.pool'),
+      description: t('included.poolDesc'),
+    },
+    {
+      icon: Music,
+      title: t('included.entertainment'),
+      description: t('included.entertainmentDesc'),
+    },
+    {
+      icon: Wifi,
+      title: t('included.wifi'),
+      description: t('included.wifiDesc'),
+    },
+    {
+      icon: Sparkles,
+      title: t('included.housekeeping'),
+      description: t('included.housekeepingDesc'),
+    },
+    {
+      icon: Users,
+      title: t('included.personalService'),
+      description: t('included.personalServiceDesc'),
+    },
+    {
+      icon: ShieldCheck,
+      title: t('included.safety'),
+      description: t('included.safetyDesc'),
+    },
+  ];
+
   return (
     <section className="py-24 bg-background">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <span className="text-accent font-medium tracking-widest uppercase text-sm">Amenities</span>
+          <span className="text-accent font-medium tracking-widest uppercase text-sm">{t('included.tagline')}</span>
           <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground mt-4 mb-6">
-            What's Included
+            {t('included.title')}
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Every detail has been thoughtfully considered to ensure your journey is nothing short of extraordinary.
+            {t('included.description')}
           </p>
         </div>
 

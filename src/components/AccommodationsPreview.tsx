@@ -1,38 +1,40 @@
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Bed, Maximize, Bath } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 import room1 from '@/assets/room-1.jpg';
 import room4 from '@/assets/room-4.jpg';
 
-const rooms = [
-  {
-    type: 'Standard Room',
-    count: '70 Rooms Available',
-    image: room1,
-    features: ['Twin or Double Bed', 'River View', 'En-suite Bathroom', 'Air Conditioning'],
-    description: 'Elegantly appointed rooms featuring premium bedding and stunning Nile views.',
-  },
-  {
-    type: 'Royal Suite',
-    count: '2 Suites Available',
-    image: room4,
-    features: ['King Size Bed', 'Private Balcony', 'Living Area', 'Premium Amenities'],
-    description: 'Indulge in our most luxurious accommodation with spacious living areas and exclusive services.',
-  },
-];
-
 const AccommodationsPreview = () => {
+  const { t } = useLanguage();
+
+  const rooms = [
+    {
+      type: t('accommodations.standardRoom'),
+      count: `70 ${t('accommodations.roomsAvailable')}`,
+      image: room1,
+      features: ['Twin or Double Bed', 'River View', 'En-suite Bathroom', 'Air Conditioning'],
+      description: 'Elegantly appointed rooms featuring premium bedding and stunning Nile views.',
+    },
+    {
+      type: t('accommodations.royalSuite'),
+      count: `2 ${t('accommodations.suitesAvailable')}`,
+      image: room4,
+      features: ['King Size Bed', 'Private Balcony', 'Living Area', 'Premium Amenities'],
+      description: 'Indulge in our most luxurious accommodation with spacious living areas and exclusive services.',
+    },
+  ];
+
   return (
     <section className="py-24 bg-navy-gradient text-primary-foreground">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <span className="text-accent font-medium tracking-widest uppercase text-sm">Accommodations</span>
+          <span className="text-accent font-medium tracking-widest uppercase text-sm">{t('accommodations.tagline')}</span>
           <h2 className="font-display text-3xl md:text-5xl font-bold mt-4 mb-6">
-            Luxury Cabins & Suites
+            {t('accommodations.title')}
           </h2>
           <p className="text-primary-foreground/70 max-w-2xl mx-auto">
-            Each cabin aboard Prince Omar has been designed with your comfort in mind, 
-            featuring elegant décor and modern amenities.
+            {t('accommodations.description')}
           </p>
         </div>
 
@@ -77,7 +79,7 @@ const AccommodationsPreview = () => {
             asChild
           >
             <Link to="/accommodations">
-              View All Accommodations <ArrowRight className="ml-2 w-4 h-4" />
+              {t('accommodations.viewAll')} <ArrowRight className="ms-2 w-4 h-4" />
             </Link>
           </Button>
         </div>
