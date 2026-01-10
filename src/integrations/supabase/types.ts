@@ -14,6 +14,60 @@ export type Database = {
   }
   public: {
     Tables: {
+      bookings: {
+        Row: {
+          adults: number
+          cabin_type: string
+          check_in_date: string
+          children: number
+          created_at: string
+          cruise_type: string
+          guest_country: string | null
+          guest_email: string
+          guest_name: string
+          guest_phone: string
+          id: string
+          special_requests: string | null
+          status: string
+          total_price: number | null
+          updated_at: string
+        }
+        Insert: {
+          adults?: number
+          cabin_type: string
+          check_in_date: string
+          children?: number
+          created_at?: string
+          cruise_type: string
+          guest_country?: string | null
+          guest_email: string
+          guest_name: string
+          guest_phone: string
+          id?: string
+          special_requests?: string | null
+          status?: string
+          total_price?: number | null
+          updated_at?: string
+        }
+        Update: {
+          adults?: number
+          cabin_type?: string
+          check_in_date?: string
+          children?: number
+          created_at?: string
+          cruise_type?: string
+          guest_country?: string | null
+          guest_email?: string
+          guest_name?: string
+          guest_phone?: string
+          id?: string
+          special_requests?: string | null
+          status?: string
+          total_price?: number | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
       visits: {
         Row: {
           city: string | null
