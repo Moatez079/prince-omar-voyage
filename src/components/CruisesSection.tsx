@@ -1,54 +1,56 @@
-import { Calendar, MapPin, Clock, Ship } from 'lucide-react';
+import { Clock, MapPin, Ship, Calendar } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import { useLanguage } from '@/contexts/LanguageContext';
 import lobby from '@/assets/lobby.jpg';
 import pool from '@/assets/pool.jpg';
 
-const cruises = [
-  {
-    id: 1,
-    title: 'Luxor to Aswan',
-    duration: '4 Nights / 5 Days',
-    departure: 'Every Monday',
-    image: lobby,
-    highlights: [
-      'Karnak Temple',
-      'Valley of the Kings',
-      'Edfu Temple',
-      'Kom Ombo Temple',
-      'Philae Temple'
-    ],
-    description: 'Begin your journey in Luxor, the world\'s greatest open-air museum, and sail south to the enchanting city of Aswan.',
-  },
-  {
-    id: 2,
-    title: 'Aswan to Luxor',
-    duration: '3 Nights / 4 Days',
-    departure: 'Every Friday',
-    image: pool,
-    highlights: [
-      'Philae Temple',
-      'High Dam',
-      'Kom Ombo Temple',
-      'Edfu Temple',
-      'Luxor Temple'
-    ],
-    description: 'Start in Aswan, navigate through the Nile\'s gentle waters, and conclude in legendary Luxor.',
-  },
-];
-
 const CruisesSection = () => {
+  const { t } = useLanguage();
+
+  const cruises = [
+    {
+      id: 1,
+      title: t('cruises.luxorToAswan'),
+      duration: `4 ${t('cruises.nights')} / 5 ${t('cruises.days')}`,
+      departure: t('cruises.everyMonday'),
+      image: lobby,
+      highlights: [
+        'Karnak Temple',
+        'Valley of the Kings',
+        'Edfu Temple',
+        'Kom Ombo Temple',
+        'Philae Temple'
+      ],
+      description: t('cruises.luxorDesc'),
+    },
+    {
+      id: 2,
+      title: t('cruises.aswanToLuxor'),
+      duration: `3 ${t('cruises.nights')} / 4 ${t('cruises.days')}`,
+      departure: t('cruises.everyFriday'),
+      image: pool,
+      highlights: [
+        'Philae Temple',
+        'High Dam',
+        'Kom Ombo Temple',
+        'Edfu Temple',
+        'Luxor Temple'
+      ],
+      description: t('cruises.aswanDesc'),
+    },
+  ];
+
   return (
     <section id="cruises" className="py-24 bg-muted">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <span className="text-accent font-medium tracking-widest uppercase text-sm">Our Journeys</span>
+          <span className="text-accent font-medium tracking-widest uppercase text-sm">{t('cruises.tagline')}</span>
           <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground mt-4 mb-6">
-            Nile Cruise Itineraries
+            {t('cruises.title')}
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Choose from our carefully curated cruise experiences, each offering unique perspectives 
-            of Egypt's ancient wonders and natural beauty.
+            {t('cruises.description')}
           </p>
         </div>
 
@@ -81,7 +83,7 @@ const CruisesSection = () => {
                 <div className="mb-6">
                   <h4 className="font-semibold text-foreground mb-2 flex items-center gap-2">
                     <MapPin className="w-4 h-4 text-accent" />
-                    Highlights
+                    {t('cruises.highlights')}
                   </h4>
                   <ul className="grid grid-cols-2 gap-2 text-sm text-muted-foreground">
                     {cruise.highlights.map((highlight, index) => (
@@ -93,7 +95,7 @@ const CruisesSection = () => {
                   </ul>
                 </div>
                 <Button className="w-full bg-primary hover:bg-primary/90" asChild>
-                  <a href="https://wa.me/201023723245">Inquire Now</a>
+                  <a href="https://wa.me/201023723245">{t('cruises.inquireNow')}</a>
                 </Button>
               </CardContent>
             </Card>

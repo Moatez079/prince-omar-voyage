@@ -2,17 +2,20 @@ import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Phone, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useLanguage } from '@/contexts/LanguageContext';
+import LanguageSwitcher from './LanguageSwitcher';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const { t } = useLanguage();
 
   const navLinks = [
-    { href: '/', label: 'Home' },
-    { href: '/cruises', label: 'Our Cruises' },
-    { href: '/accommodations', label: 'Accommodations' },
-    { href: '/gallery', label: 'Gallery' },
-    { href: '/contact', label: 'Contact' },
+    { href: '/', label: t('nav.home') },
+    { href: '/cruises', label: t('nav.cruises') },
+    { href: '/accommodations', label: t('nav.accommodations') },
+    { href: '/gallery', label: t('nav.gallery') },
+    { href: '/contact', label: t('nav.contact') },
   ];
 
   const isActive = (path: string) => location.pathname === path;
@@ -32,7 +35,7 @@ const Header = () => {
               amoamen053@gmail.com
             </a>
           </div>
-          <span className="text-accent font-medium">Luxury Nile Cruise Experience</span>
+          <span className="text-accent font-medium">{t('hero.tagline')}</span>
         </div>
       </div>
 
@@ -41,7 +44,7 @@ const Header = () => {
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center gap-3">
             <span className="font-display text-2xl md:text-3xl font-bold text-primary-foreground">
-              Prince <span className="text-accent">Omar</span>
+              {t('hero.title')} <span className="text-accent">{t('hero.titleHighlight')}</span>
             </span>
           </Link>
 
@@ -58,18 +61,22 @@ const Header = () => {
                 {link.label}
               </Link>
             ))}
+            <LanguageSwitcher />
             <Button asChild className="bg-accent hover:bg-accent/90 text-accent-foreground">
-              <a href="https://wa.me/201023723245">Book Now</a>
+              <a href="https://wa.me/201023723245">{t('nav.bookNow')}</a>
             </Button>
           </div>
 
           {/* Mobile menu button */}
-          <button
-            className="lg:hidden text-primary-foreground"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          <div className="lg:hidden flex items-center gap-2">
+            <LanguageSwitcher />
+            <button
+              className="text-primary-foreground"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
@@ -89,7 +96,7 @@ const Header = () => {
                 </Link>
               ))}
               <Button asChild className="bg-accent hover:bg-accent/90 text-accent-foreground w-full">
-                <a href="https://wa.me/201023723245">Book Now</a>
+                <a href="https://wa.me/201023723245">{t('nav.bookNow')}</a>
               </Button>
             </div>
           </div>

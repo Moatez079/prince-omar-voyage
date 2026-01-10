@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 import cruiseExterior from '@/assets/cruise-exterior.jpg';
 import lobby from '@/assets/lobby.jpg';
@@ -19,16 +20,18 @@ const images = [
 ];
 
 const GalleryPreview = () => {
+  const { t } = useLanguage();
+
   return (
     <section className="py-24 bg-muted">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <span className="text-accent font-medium tracking-widest uppercase text-sm">Gallery</span>
+          <span className="text-accent font-medium tracking-widest uppercase text-sm">{t('gallery.tagline')}</span>
           <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground mt-4 mb-6">
-            Experience the Beauty
+            {t('gallery.title')}
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Take a glimpse into the world of Prince Omar Nile Cruise through our gallery.
+            {t('gallery.description')}
           </p>
         </div>
 
@@ -55,7 +58,7 @@ const GalleryPreview = () => {
             asChild
           >
             <Link to="/gallery">
-              View Full Gallery <ArrowRight className="ml-2 w-4 h-4" />
+              {t('gallery.viewFull')} <ArrowRight className="ms-2 w-4 h-4" />
             </Link>
           </Button>
         </div>
