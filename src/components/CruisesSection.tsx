@@ -2,15 +2,16 @@ import { Clock, MapPin, Ship, Calendar } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { useLanguage } from '@/contexts/LanguageContext';
+import BookingForm from '@/components/BookingForm';
 import lobby from '@/assets/lobby.jpg';
 import pool from '@/assets/pool.jpg';
 
 const CruisesSection = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   const cruises = [
     {
-      id: 1,
+      id: 'luxor-aswan' as const,
       title: t('cruises.luxorToAswan'),
       duration: `4 ${t('cruises.nights')} / 5 ${t('cruises.days')}`,
       departure: t('cruises.everyMonday'),
@@ -25,7 +26,7 @@ const CruisesSection = () => {
       description: t('cruises.luxorDesc'),
     },
     {
-      id: 2,
+      id: 'aswan-luxor' as const,
       title: t('cruises.aswanToLuxor'),
       duration: `3 ${t('cruises.nights')} / 4 ${t('cruises.days')}`,
       departure: t('cruises.everyFriday'),
@@ -94,9 +95,15 @@ const CruisesSection = () => {
                     ))}
                   </ul>
                 </div>
-                <Button className="w-full bg-primary hover:bg-primary/90" asChild>
-                  <a href="https://wa.me/201023723245">{t('cruises.inquireNow')}</a>
-                </Button>
+                <BookingForm 
+                  cruiseType={cruise.id}
+                  trigger={
+                    <Button className="w-full bg-accent hover:bg-accent/90 text-accent-foreground gap-2">
+                      <Ship className="w-4 h-4" />
+                      {language === 'ar' ? 'احجز الآن' : 'Book Now'}
+                    </Button>
+                  }
+                />
               </CardContent>
             </Card>
           ))}
