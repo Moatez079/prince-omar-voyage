@@ -39,8 +39,11 @@ const AdminLogin = () => {
     setLoading(true);
 
     try {
+      // Normalize email to lowercase
+      const normalizedEmail = email.toLowerCase().trim();
+      
       const { data, error } = await supabase.auth.signInWithPassword({
-        email,
+        email: normalizedEmail,
         password,
       });
 
