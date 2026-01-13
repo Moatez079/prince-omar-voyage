@@ -5,30 +5,60 @@ import ContactCTA from '@/components/ContactCTA';
 import { useVisitorTracking } from '@/hooks/useVisitorTracking';
 import { X } from 'lucide-react';
 
+// Exterior
 import cruiseExterior from '@/assets/cruise-exterior.jpg';
 import cruiseNight from '@/assets/cruise-night.jpg';
+
+// Interior - Lobby & Bar
 import lobby from '@/assets/lobby.jpg';
+import barLounge from '@/assets/bar-lounge.jpg';
+import barSeating from '@/assets/bar-seating.jpg';
+import corridor from '@/assets/corridor.jpg';
+
+// Dining
 import restaurant from '@/assets/restaurant.jpg';
+import restaurantPrivate from '@/assets/restaurant-private.jpg';
+
+// Deck
 import pool from '@/assets/pool.jpg';
 import sundeck from '@/assets/sundeck.jpg';
+import sundeckSeating from '@/assets/sundeck-seating.jpg';
+
+// Cabins
 import room1 from '@/assets/room-1.jpg';
 import room2 from '@/assets/room-2.jpg';
 import room3 from '@/assets/room-3.jpg';
 import room4 from '@/assets/room-4.jpg';
+import suite from '@/assets/suite.jpg';
 
 const categories = ['All', 'Exterior', 'Interior', 'Cabins', 'Dining', 'Deck'];
 
 const images = [
+  // Exterior
   { src: cruiseExterior, alt: 'Prince Omar Cruise Exterior', category: 'Exterior' },
   { src: cruiseNight, alt: 'Cruise at Night', category: 'Exterior' },
-  { src: lobby, alt: 'Grand Lobby with Stained Glass', category: 'Interior' },
-  { src: restaurant, alt: 'Restaurant Buffet', category: 'Dining' },
-  { src: pool, alt: 'Swimming Pool', category: 'Deck' },
-  { src: sundeck, alt: 'Sun Deck Loungers', category: 'Deck' },
-  { src: room1, alt: 'Standard Cabin Twin', category: 'Cabins' },
-  { src: room2, alt: 'Standard Cabin View', category: 'Cabins' },
-  { src: room3, alt: 'Cabin Bed Detail', category: 'Cabins' },
-  { src: room4, alt: 'Cabin River View', category: 'Cabins' },
+  
+  // Interior - Lobby & Bar
+  { src: lobby, alt: 'Grand Lobby with Bar', category: 'Interior' },
+  { src: barLounge, alt: 'Bar Lounge Area', category: 'Interior' },
+  { src: barSeating, alt: 'Bar Seating Area', category: 'Interior' },
+  { src: corridor, alt: 'Cabin Corridor', category: 'Interior' },
+  
+  // Dining
+  { src: restaurant, alt: 'Main Restaurant', category: 'Dining' },
+  { src: restaurantPrivate, alt: 'Private Dining Room', category: 'Dining' },
+  
+  // Deck
+  { src: pool, alt: 'Swimming Pool & Sun Deck', category: 'Deck' },
+  { src: sundeck, alt: 'Sun Deck with Nile View', category: 'Deck' },
+  { src: sundeckSeating, alt: 'Sun Deck Seating Area', category: 'Deck' },
+  
+  // Cabins
+  { src: room1, alt: 'Standard Twin Cabin', category: 'Cabins' },
+  { src: room2, alt: 'Standard Twin Cabin View', category: 'Cabins' },
+  { src: room3, alt: 'Standard Double Cabin', category: 'Cabins' },
+  { src: room4, alt: 'Deluxe Double Cabin', category: 'Cabins' },
+  { src: suite, alt: 'Royal Suite', category: 'Cabins' },
 ];
 
 const Gallery = () => {
@@ -91,7 +121,7 @@ const Gallery = () => {
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/40 transition-colors duration-300 flex items-center justify-center">
-                    <span className="text-primary-foreground opacity-0 group-hover:opacity-100 transition-opacity font-medium text-sm">
+                    <span className="text-primary-foreground opacity-0 group-hover:opacity-100 transition-opacity font-medium text-sm text-center px-2">
                       {image.alt}
                     </span>
                   </div>
