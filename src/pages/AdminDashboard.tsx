@@ -63,9 +63,34 @@ const AdminDashboard = () => {
   const [user, setUser] = useState<any>(null);
 
   useEffect(() => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
+      if (!session?.user) {
+        navigate('/admin');
+        return;
+      }
+      setUser(session.user);
+      
+      // Check if user is admin
+      const { data: roleData } = await supabase
+        .from('user_roles')
+        .select('role')
+        .eq('user_id', session.user.id)
+        .eq('role', 'admin')
+        .maybeSingle();
+
+      if (!roleData) {
+        await supabase.auth.signOut();
+        navigate('/admin');
+        return;
+      }
+    });
+
+    // Initial check
     checkAuth();
     fetchData();
-  }, []);
+
+    return () => subscription.unsubscribe();
+  }, [navigate]);
 
   const checkAuth = async () => {
     const { data: { user } } = await supabase.auth.getUser();
@@ -73,6 +98,21 @@ const AdminDashboard = () => {
       navigate('/admin');
       return;
     }
+    
+    // Check admin role
+    const { data: roleData } = await supabase
+      .from('user_roles')
+      .select('role')
+      .eq('user_id', user.id)
+      .eq('role', 'admin')
+      .maybeSingle();
+
+    if (!roleData) {
+      await supabase.auth.signOut();
+      navigate('/admin');
+      return;
+    }
+    
     setUser(user);
   };
 
