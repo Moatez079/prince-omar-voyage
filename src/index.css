@@ -143,3 +143,12 @@
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 10px 20px -10px rgba(0, 0, 0, 0.1);
   }
 }
+/* Hide Lovable branding badge */
+#lovable-badge-cta, 
+#lovable-badge-close,
+[id^="lovable-badge"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
